@@ -1,6 +1,8 @@
 package com.iftm.client.services;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import javax.persistence.EntityNotFoundException;
 
@@ -43,6 +45,12 @@ public class ClientService {
 		return new ClientDTO(entity);
 	}
 	
+	@Transactional(readOnly = true)
+	public List<ClientDTO> findAll(){
+		List<Client> list = repository.findAll();
+		return list.stream().map(x -> new ClientDTO(x)).collect(Collectors.toList());
+	}
+
 	
 	
 	@Transactional
@@ -74,7 +82,7 @@ public class ClientService {
 		}
 	}
 
-	private void updateData(Client entity, ClientDTO dto) {
+	public void updateData(Client entity, ClientDTO dto) {
 		entity.setName(dto.getName());
 		entity.setCpf(dto.getCpf());
 		entity.setIncome(dto.getIncome());
