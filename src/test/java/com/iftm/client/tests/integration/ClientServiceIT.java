@@ -92,6 +92,7 @@ public class ClientServiceIT {
 		
 		clientDTO.setName("NovoNome");
 		service.update(existingId, clientDTO);
+		
 		Assertions.assertNotEquals(clientDTO, client);
 	}
 
