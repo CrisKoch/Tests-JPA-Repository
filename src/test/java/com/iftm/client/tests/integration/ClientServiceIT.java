@@ -54,14 +54,16 @@ public class ClientServiceIT {
 		Assertions.assertEquals(countTotalClients - 1, result.size());
 	}
 
-	@Test // refazer
+	@Test
 	@DisplayName("FindById deve verificar se nome e CPF sao correspondentes a id existente")
 	public void findByIdShoulVerifyIfNameAndCPFAreCorrespondentsWhenIdExists() {
-		clientDTO.setId(existingId);
+		
+		clientDTO = service.findById(existingId);
 		clientDTO.setName("Joao");
 		clientDTO.setCpf("111111111-11");
 
-		Assertions.assertSame(clientDTO, service.findById(existingId));
+		Assertions.assertEquals("Joao", clientDTO.getName());
+		Assertions.assertEquals("111111111-11", clientDTO.getCpf());
 
 		/*
 		 * String cpf1 = service.findById(existingId).getCpf(); String nome1 =
@@ -87,6 +89,7 @@ public class ClientServiceIT {
 	@Test 
 	@DisplayName("Update deve atualizar dados cliente")
 	public void updateShouldChangeClientData() {
+		
 		clientDTO.setName("NovoNome");
 		service.update(existingId, clientDTO);
 		Assertions.assertNotEquals(clientDTO, client);
