@@ -65,16 +65,6 @@ public class ClientServiceIT {
 		Assertions.assertEquals("Joao", clientDTO.getName());
 		Assertions.assertEquals("111111111-11", clientDTO.getCpf());
 
-		/*
-		 * String cpf1 = service.findById(existingId).getCpf(); String nome1 =
-		 * service.findById(existingId).getName();
-		 */
-		// String cpf1 = service.findById(clientDTO.getId()).getCpf();
-		// String nome1 = service.findById(clientDTO.getId()).getName();
-		/*
-		 * Assertions.assertEquals(cpf1, clientDTO.getCpf());
-		 * Assertions.assertEquals(nome1, clientDTO.getName());
-		 */
 	}
 
 	@Test

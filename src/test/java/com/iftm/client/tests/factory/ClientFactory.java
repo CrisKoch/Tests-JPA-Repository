@@ -17,6 +17,10 @@ public class ClientFactory {
 		return new ClientDTO(createClient());
 	}
 	
-	
+	public static ClientDTO createClientDTO(Long id) {
+		ClientDTO dto = createClientDTO();
+		dto.setId(id);
+		return dto;
+	}
 
 }
